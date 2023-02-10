@@ -1,0 +1,37 @@
+rDBSecGrp:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for MySQL RDS # Required
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 3306
+        ToPort: 3306
+        CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: DBSecGrp
+          rRDS:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: "String"
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: false
+      DBInstanceClass: "String"
+      DBInstanceIdentifier: "String"
+      DBName: "String"
+      Engine: "String"
+      MasterUserPassword: "String"
+      MasterUsername: "String"
+      MultiAZ: false
+      Port: "String"
+      PubliclyAccessible: true
+      VPCSecurityGroups:
+        VPCSecurityGroups
+        pDBName:
+    Description: Database Name
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: '/clarusway/dbname'
+  pDBPassword:
+    Description: Database Password
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: '/clarusway/password'
